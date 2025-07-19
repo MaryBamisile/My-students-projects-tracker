@@ -1,6 +1,3 @@
-###Adding this line to trigger my GitHub actions
-
-
 # Student-Project-Tracker Web APP
 A simple FastAPI web application for registering students and tracking their weekly progress during the Cloud Native Series.
 
@@ -21,7 +18,7 @@ A simple FastAPI web application for registering students and tracking their wee
 
 ### 1. Clone the Repository
 ```bash
-git clone https://github.com/chisomjude/student-project-tracker.git
+git clone To https://github.com/MaryBamisile/My-students-projects-tracker.git
 cd student-project-tracker
 ```
 
@@ -35,8 +32,10 @@ pip install -r requirements.txt
 ### 3.Db Conenctions
 - navigate to app/main and update vault ip :
 
-```export VAULT_ADDR=
-   export VAULT_TOKEN=
+```
+export VAULT_ADDR=http://YourvaultVMIP:8200
+export VAULT_ROLE_ID=**********************
+export VAULT_SECRET_ID=********************
 ```
 
 ### 4. Run the Application Locally
@@ -83,16 +82,43 @@ docker push your-dockerhub-username/student-tracker
 
 ---
 
-## 🌐 Deploying to Cloud (Optional)
-You can deploy the app on platforms like:
-- Render
-- Railway
-- Fly.io
-- Azure App Service
-- Elastic Beanstalk or more
+### GitHub Actions deployment
+- Write your cicd workflow using github action that deploys this app to your VM. 
+- Go to GitHub → Settings → Secrets and Variables → Actions and add all the secrets declared in the ci-cd workflow
+- Ensure your VM is ready.
+
+   ```
+  # On your VM, ensure docker is installed. Otherwise, run the following:
+   sudo apt update
+   sudo apt install -y docker.io
+   sudo systemctl enable --now docker
+   sudo usermod -aG docker $USER
+   ```
+- Feel free to update the Readme with anything and commit to trigger your cicd or test deployment
+- Check successfull deployment (Go to the Actions tab). If pipeline runs successfully, uour app should be functional via: http://yourVMIP:port
+
+## My working app:
+
+<img width="757" height="400" alt="image" src="https://github.com/user-attachments/assets/3a9ea264-88a1-4d13-8ac9-90efe98f2e78" />
+
+## My GitHub Actions deployment:
+
+<img width="1434" height="359" alt="image" src="https://github.com/user-attachments/assets/63cef6d7-c737-4133-b70a-c5a57320d732" />
+
+## My VS code workings:
+
+<img width="1132" height="513" alt="image" src="https://github.com/user-attachments/assets/1e63b8c8-ee03-418d-9e74-0f8bb1314c0d" />
+
+## My docker image:
+
+<img width="722" height="59" alt="image" src="https://github.com/user-attachments/assets/8551ec35-bb15-46e7-bc2e-f4958e423a35" />
 
 
-## 👩🏽‍💻 Built for the Cloud Native Series by Chisom
+Note: Ensure your port is added to the Network security group of the VM.
+
+---
+
+## 👩🏽‍💻 Built for the Cloud Native Series 
 This project is used for learning cloud-native tools and Handson-Project.
 
 Feel free to fork and extend it!
